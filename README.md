@@ -87,9 +87,9 @@ All commands follow a chainable hierarchy to their root node. Every function ret
 
 URI Parameters, Body Properties, and Query String Parameters are flattened with this API. To ensure this isn't a problem, `schema.js` that is included in this library ensures each variable is placed in the right location to make the request to your Nomad Cluster.
 
-* Payload Body Properties retain the same Capitlization and spelling as displayed on the REST Documentation
+* Payload Body Properties retain the same Capitlization and spelling as displayed on the REST Documentation.
 * URI Parameters now use a "camelCase" type setting. This means for example `node_id` becomes `nodeId`, `job_id` becomes `jobId`, `allocation_id` becomes `allocationId`.
-* Query String Parameters retain the same Capitlization and spelling as displayed on the REST Documentation
+* Query String Parameters retain the same Capitlization and spelling as displayed on the REST Documentation.
 
 ```javascript
 ... //Example
@@ -141,4 +141,11 @@ All functions (except .hostel chain functions (i.e. `nomadAPI.hostel.supportedAc
 ...
 
 ```
+## Adding Features
 
+If you wish to add features I haven't gotten to yet, you can pretty easily do so like:
+
+i) Fork the repo.
+ii) Add the new feature chain to `schema.js`
+iii) Add a new Function property to the API Chain within the Class.
+iv) Merge back if you're feeling nice.
