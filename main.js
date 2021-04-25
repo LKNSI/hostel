@@ -21,7 +21,7 @@ class Hostel {
             this.connection = {
                 request: init.timeouts ? init.timeouts.request ? init.timeouts.request : 20000 : 20000
             }
-            this.secretID = (() => {
+            this.secretID = (return () => {
                 if(this.connection.ignoreSecretTLSWarning){
                     return init.secretID ? [init.secretID,true] : ["00000",false]
                 }else{
@@ -56,7 +56,7 @@ class Hostel {
                 })
             })
         }catch(err){
-            throw new Error(`Failed to start. Did you pass in the required properties? ${err.message} `)
+            throw new Error(`Failed to start. Did you pass in the required properties? ${err.message}`)
         }
     }
 
