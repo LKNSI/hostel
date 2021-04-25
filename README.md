@@ -57,8 +57,8 @@ await nomadAPI.jobs.list().then(k => {console.log(k)})
   * Jobs
     * List
     * Read
-    * Create
-    * Parse
+    * Create // Standard JSON Object (Stringification not required).
+    * Parse // Pass HCL/HCL2 stringified.
     * Update
     * Stop
     * Revert
