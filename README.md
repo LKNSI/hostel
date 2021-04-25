@@ -43,7 +43,7 @@ await nomadAPI.jobs.list().then(k => {console.log(k)})
 
 
 ## Features
-* As close to 1:1 binding with offical REST API bindings.
+* As close to 1:1 binding with official REST API bindings.
 * Currently supporting: 
   * Allocations
     * List
