@@ -27,6 +27,9 @@ const main = async () => {
           },
           ignoreSecretTLSWarning: false, // Prevent Client from sending SecretID if HTTP is accidently selected. Set to true to ignore.
           ignoreTLSWarning: false // Ignore HTTPS Unauthorized warning by setting to true.
+        },
+        timeouts:{
+          request: 20000 // Timeout in MS for requests made to the Nomad Cluster.
         }
     })
 }
