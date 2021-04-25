@@ -8,52 +8,56 @@ new Agent({
 });
 class Hostel {
     constructor(init){
-        this.hostname = init.connection.hostname
-        this.port = init.connection.port
-        this.version = init.version ? init.version : "/v1" 
-        this.ssl = {
-            enabled: init.connection.sslEnabled,
-            privateKey: init.connection.ssl ? init.connection.ssl.privateKey ? init.connection.ssl.privateKey : null : null,
-            ca: init.connection.ssl ? init.connection.ssl.ca ? init.connection.ssl.ca : null : null,
-            cert: init.connection.ssl ? init.connection.ssl.cert ? init.connection.ssl.cert : null : null
-        }
-        this.connection = {
-            request: init.timeouts ? init.timeouts.request ? init.timeouts.request : 20000 : 20000
-        }
-        this.secretID = (() => {
-            if(this.connection.ignoreSecretTLSWarning){
-                return init.secretID ? [init.secretID,true] : ["00000",false]
-            }else{
-                if(this.connection.sslEnabled){
+        try{
+            this.hostname = init.connection.hostname
+            this.port = init.connection.port
+            this.version = init.version ? init.version : "/v1" 
+            this.ssl = {
+                enabled: init.connection.sslEnabled,
+                privateKey: init.connection.ssl ? init.connection.ssl.privateKey ? init.connection.ssl.privateKey : null : null,
+                ca: init.connection.ssl ? init.connection.ssl.ca ? init.connection.ssl.ca : null : null,
+                cert: init.connection.ssl ? init.connection.ssl.cert ? init.connection.ssl.cert : null : null
+            }
+            this.connection = {
+                request: init.timeouts ? init.timeouts.request ? init.timeouts.request : 20000 : 20000
+            }
+            this.secretID = (() => {
+                if(this.connection.ignoreSecretTLSWarning){
                     return init.secretID ? [init.secretID,true] : ["00000",false]
                 }else{
-                    return ["00000",false]
+                    if(this.connection.sslEnabled){
+                        return init.secretID ? [init.secretID,true] : ["00000",false]
+                    }else{
+                        return ["00000",false]
+                    }
                 }
+            })()
+            this.includeSecretID = false
+            this.lifecycle = {
+                isReady: false,
+                isAuthorized: false,
+                authIsRejected: false,
+                hasSentRequest: false,
+                hasIgnoredSecretTLSWarning: this.connection.ignoreSecretTLSWarning,
+                hasIgnoredTLSWarning: this.connection.ignoreTLSWarning
             }
-        })()
-        this.includeSecretID = false
-        this.lifecycle = {
-            isReady: false,
-            isAuthorized: false,
-            authIsRejected: false,
-            hasSentRequest: false,
-            hasIgnoredSecretTLSWarning: this.connection.ignoreSecretTLSWarning,
-            hasIgnoredTLSWarning: this.connection.ignoreTLSWarning
-        }
-        this.request = axios.create({
-            baseURL: `${this.ssl.enabled ? "https" : "http"}://${this.hostname}:${this.port}`,
-            timeout: this.connection.request,
-            headers: {
-                "X-Nomad-Token": this.includeSecretID ? this.secretID[0] : "00000"
-            },
-            httpAgent: new http.Agent({keepAlive: this.connection.keepAlive}),
-            httpsAgent: new https.Agent({
-                rejectUnauthorized: this.connection.ignoreTLSWarning ? false : true, 
-                ca: this.ssl.ca,
-                cert: this.ssl.cert,
-                key: this.ssl.privateKey
+            this.request = axios.create({
+                baseURL: `${this.ssl.enabled ? "https" : "http"}://${this.hostname}:${this.port}`,
+                timeout: this.connection.request,
+                headers: {
+                    "X-Nomad-Token": this.includeSecretID ? this.secretID[0] : "00000"
+                },
+                httpAgent: new http.Agent({keepAlive: this.connection.keepAlive}),
+                httpsAgent: new https.Agent({
+                    rejectUnauthorized: this.connection.ignoreTLSWarning ? false : true, 
+                    ca: this.ssl.ca,
+                    cert: this.ssl.cert,
+                    key: this.ssl.privateKey
+                })
             })
-        })
+        }catch(err){
+            throw new Error(`Failed to start. Did you pass in the required properties? ${err.message} `)
+        }
     }
 
     async lifecycleCheck(action){
