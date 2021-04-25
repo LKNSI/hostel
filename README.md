@@ -146,6 +146,9 @@ All functions (except .hostel chain functions (i.e. `nomadAPI.hostel.supportedAc
 If you wish to add features I haven't gotten to yet, you can pretty easily do so like:
 
 i) Fork the repo.
+
 ii) Add the new feature chain to `schema.js`
+
 iii) Add a new Function property to the API Chain within the Class.
+
 iv) Merge back if you're feeling nice.
