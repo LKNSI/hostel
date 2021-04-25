@@ -186,14 +186,13 @@ class Hostel {
                         return [true,request.data ? request.data : null]
                     }
                 }else{
-                    return [false,null];
+                    return [false,request.data ? request.data : null];
                 }
             }else{
-                console.log(invalidRequest)
-                return [false,null];
+                return [false,invalidRequest];
             }
         }else{
-            return false
+            return [false,null]
         }
     }
 
@@ -206,9 +205,8 @@ class Hostel {
                     query: options ? options.query ? options.query : null : null,
                     body: options ? options.body ? options.body : null : null,
                     params: null
-                }).catch(k => {return k})
-                var outcome = request.status ? (request.status >= 200 && request.status < 300) : false
-                return [outcome ? true : false, request.data ? request.data : null]
+                }).catch(k => {return false;})
+                return request
             }else{
                 console.log(`Rejected action, lifecycle issues: ${cl[1]}`)
                 return [false,null];
@@ -222,9 +220,8 @@ class Hostel {
                     query: false,
                     body: false,
                     params: {alloc_id: options.allocationId}
-                }).catch(k => {return k})
-                var outcome = request.status ? (request.status >= 200 && request.status < 300) : false
-                return [outcome ? true : false, request.data ? request.data : null]
+                }).catch(k => {return false;})
+                return request
             }else{
                 console.log(`Rejected action, lifecycle issues: ${cl[1]}`)
                 return [false,null];
@@ -238,9 +235,8 @@ class Hostel {
                     query: false,
                     body: false,
                     params: {alloc_id: options.allocationId}
-                }).catch(k => {return k})
-                var outcome = request.status ? (request.status >= 200 && request.status < 300) : false
-                return [outcome ? true : false, request.data ? request.data : null]
+                }).catch(k => {return false;})
+                return request
             }else{
                 console.log(`Rejected action, lifecycle issues: ${cl[1]}`)
                 return [false,null];
@@ -254,9 +250,8 @@ class Hostel {
                     query: false,
                     body: {Signal: options.signal, Task: options.task},
                     params: {alloc_id: options.allocationId}
-                }).catch(k => {return k})
-                var outcome = request.status ? (request.status >= 200 && request.status < 300) : false
-                return [outcome ? true : false, request.data ? request.data : null]
+                }).catch(k => {return false;})
+                return request
             }else{
                 console.log(`Rejected action, lifecycle issues: ${cl[1]}`)
                 return [false,null];
@@ -270,9 +265,8 @@ class Hostel {
                     query: false,
                     body: false,
                     params: {alloc_id: options.allocationId}
-                }).catch(k => {return k})
-                var outcome = request.status ? (request.status >= 200 && request.status < 300) : false
-                return [outcome ? true : false, request.data ? request.data : null]
+                }).catch(k => {return false;})
+                return request
             }else{
                 console.log(`Rejected action, lifecycle issues: ${cl[1]}`)
                 return [false,null];
@@ -305,9 +299,8 @@ class Hostel {
                     query: options ? options.query ? options.query : null : null,
                     body: null,
                     params: null
-                }).catch(k => {return k})
-                var outcome = request.status ? (request.status >= 200 && request.status < 300) : false
-                return [outcome ? true : false, request.data ? request.data : null]
+                }).catch(k => {return false;})
+                return request
             }else{
                 console.log(`Rejected action, lifecycle issues: ${cl[1]}`)
                 return [false,null];
@@ -321,9 +314,8 @@ class Hostel {
                     query: null,
                     body: null,
                     params: {job_id: options.jobId}
-                }).catch(k => {return k})
-                var outcome = request.status ? (request.status >= 200 && request.status < 300) : false
-                return [outcome ? true : false, request.data ? request.data : null]
+                }).catch(k => {return false;})
+                return request
             }else{
                 console.log(`Rejected action, lifecycle issues: ${cl[1]}`)
                 return [false,null];
@@ -343,9 +335,8 @@ class Hostel {
                         PreserveCounts: options.PreserveCounts ? options.PreserveCounts : null
                     },
                     params: null
-                }).catch(k => {return k})
-                var outcome = request.status ? (request.status >= 200 && request.status < 300) : false
-                return [outcome ? true : false, request.data ? request.data : null]
+                }).catch(k => {return false;})
+                return request
             }else{
                 console.log(`Rejected action, lifecycle issues: ${cl[1]}`)
                 return [false,null];
@@ -362,9 +353,8 @@ class Hostel {
                         Canonicalize: options.Canonicalize ? options.Canonicalize : false
                     },
                     params: null
-                }).catch(k => {return k})
-                var outcome = request.status ? (request.status >= 200 && request.status < 300) : false
-                return [outcome ? true : false, request.data ? request.data : null]
+                }).catch(k => {return false;})
+                return request
             }else{
                 console.log(`Rejected action, lifecycle issues: ${cl[1]}`)
                 return [false,null];
@@ -384,9 +374,8 @@ class Hostel {
                         PreserveCounts: options.PreserveCounts ? options.PreserveCounts : null
                     },
                     params: {job_id: options.jobId}
-                }).catch(k => {return k})
-                var outcome = request.status ? (request.status >= 200 && request.status < 300) : false
-                return [outcome ? true : false, request.data ? request.data : null]
+                }).catch(k => {return false;})
+                return request
             }else{
                 console.log(`Rejected action, lifecycle issues: ${cl[1]}`)
                 return [false,null];
@@ -400,9 +389,8 @@ class Hostel {
                     query: options.purge ? options.purge : null,
                     body: null,
                     params: {job_id: options.jobId}
-                }).catch(k => {return k})
-                var outcome = request.status ? (request.status >= 200 && request.status < 300) : false
-                return [outcome ? true : false, request.data ? request.data : null]
+                }).catch(k => {return false;})
+                return request
             }else{
                 console.log(`Rejected action, lifecycle issues: ${cl[1]}`)
                 return [false,null];
@@ -422,9 +410,8 @@ class Hostel {
                         VaultToken: options.VaultToken ? options.VaultToken : null
                     },
                     params: {job_id: options.jobId}
-                }).catch(k => {return k})
-                var outcome = request.status ? (request.status >= 200 && request.status < 300) : false
-                return [outcome ? true : false, request.data ? request.data : null]
+                }).catch(k => {return false;})
+                return request
             }else{
                 console.log(`Rejected action, lifecycle issues: ${cl[1]}`)
                 return [false,null];
@@ -442,9 +429,8 @@ class Hostel {
                         PolicyOverride: options.PolicyOverride ? options.PolicyOverride : false
                     },
                     params: {job_id: options.jobId}
-                }).catch(k => {return k})
-                var outcome = request.status ? (request.status >= 200 && request.status < 300) : false
-                return [outcome ? true : false, request.data ? request.data : null]
+                }).catch(k => {return false;})
+                return request
             }else{
                 console.log(`Rejected action, lifecycle issues: ${cl[1]}`)
                 return [false,null];
@@ -461,9 +447,8 @@ class Hostel {
                     query: options ? options.query ? options.query : null : null,
                     body: null,
                     params: null
-                }).catch(k => {return k})
-                var outcome = request.status ? (request.status >= 200 && request.status < 300) : false
-                return [outcome ? true : false, request.data ? request.data : null]
+                }).catch(k => {return false;})
+                return request
             }else{
                 console.log(`Rejected action, lifecycle issues: ${cl[1]}`)
                 return [false,null];
@@ -477,9 +462,8 @@ class Hostel {
                     query: null,
                     body: null,
                     params: {node_id: options.nodeId}
-                }).catch(k => {return k})
-                var outcome = request.status ? (request.status >= 200 && request.status < 300) : false
-                return [outcome ? true : false, request.data ? request.data : null]
+                }).catch(k => {return false;})
+                return request
             }else{
                 console.log(`Rejected action, lifecycle issues: ${cl[1]}`)
                 return [false,null];
@@ -493,9 +477,8 @@ class Hostel {
                     query: null,
                     body: {DrainSpec: options.DrainSpec},
                     params: {node_id: options.nodeId}
-                }).catch(k => {return k})
-                var outcome = request.status ? (request.status >= 200 && request.status < 300) : false
-                return [outcome ? true : false, request.data ? request.data : null]
+                }).catch(k => {return false;})
+                return request
             }else{
                 console.log(`Rejected action, lifecycle issues: ${cl[1]}`)
                 return [false,null];
@@ -509,9 +492,8 @@ class Hostel {
                     query: null,
                     body: null,
                     params: {node_id: options.nodeId}
-                }).catch(k => {return k})
-                var outcome = request.status ? (request.status >= 200 && request.status < 300) : false
-                return [outcome ? true : false, request.data ? request.data : null]
+                }).catch(k => {return false;})
+                return request
             }else{
                 console.log(`Rejected action, lifecycle issues: ${cl[1]}`)
                 return [false,null];
@@ -525,9 +507,8 @@ class Hostel {
                     query: null,
                     body: {Eligibility: options.Eligibility},
                     params: {node_id: options.nodeId}
-                }).catch(k => {return k})
-                var outcome = request.status ? (request.status >= 200 && request.status < 300) : false
-                return [outcome ? true : false, request.data ? request.data : null]
+                }).catch(k => {return false;})
+                return request
             }else{
                 console.log(`Rejected action, lifecycle issues: ${cl[1]}`)
                 return [false,null];
