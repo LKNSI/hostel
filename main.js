@@ -10,7 +10,7 @@ class Hostel {
     constructor(init){
         this.hostname = init.connection.hostname
         this.port = init.connection.port
-        this.version = init.version ? init.version : "/v1"
+        this.version = init.version ? init.version : "/v1" 
         this.ssl = {
             enabled: init.connection.sslEnabled,
             privateKey: init.connection.ssl ? init.connection.ssl.privateKey ? init.connection.ssl.privateKey : null : null,
