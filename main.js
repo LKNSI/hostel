@@ -172,14 +172,14 @@ class Hostel {
             }
             if(!invalidRequest[0] && uri){
                 var renderQuery = includeQuery ? querystring.stringify(query) : false
-                var renderBody = includeBody ? includeBody : false
+                var renderBody = includeBody ? true : false
                 var request;
                 if(["put","delete","patch","get","options"].includes(schemaObject.type)){
                     request = await this.request[schemaObject.type](`${this.version}${schemaObject.path}${renderedParams ? renderedParams : ""}${renderedAction ? `/${renderedAction}` : ""}${renderQuery ? `/${renderQuery}` : ""}`,{
-                        data: renderBody ? renderBody : null
+                        data: body ? body : null
                     }).catch(k => {console.log(k);return false;})
                 }else{
-                    request = await this.request[schemaObject.type](`${this.version}${schemaObject.path}${renderedParams ? renderedParams : ""}${renderedAction ? `/${renderedAction}` : ""}${renderQuery ? `/${renderQuery}` : ""}`,renderBody ? renderBody : {}).catch(k => {console.log(k);return false;})
+                    request = await this.request[schemaObject.type](`${this.version}${schemaObject.path}${renderedParams ? renderedParams : ""}${renderedAction ? `/${renderedAction}` : ""}${renderQuery ? `/${renderQuery}` : ""}`,body ? body : {}).catch(k => {console.log(k);return false;})
                 }
                 if(request){
                     if(request.status >= 200 && request.status < 300){
