@@ -89,13 +89,52 @@ URI Parameters, Body Properties, and Query String Parameters are flattened with 
 * Query String Parameters retain the same Capitlization and spelling as displayed on the REST Documentation
 
 ```javascript
-... Example
+... //Example
 
     nomadAPI.nodes.eligibility({
         nodeId: "00000-0000-0000-00000",
         Eligibility: "eligible",
     })
     
+...
+
+```
+
+All functions (except .hostel chain functions (i.e. `nomadAPI.hostel.supportedActions()`) return an array with two elements. A boolean success indicator, and the response from the Nomad Cluster as a preparsed Array containing Object(s).
+
+```javascript
+... //Fetching Jobs from the Nomad Cluster
+    
+    await nomadAPI.jobs.list().then(k => {console.log(k)})
+
+... //Example Response
+    
+    [
+        true, 
+        [
+            {
+              ID: 'ice-cream-machine-magic',
+              ParentID: '',
+              Name: 'ice-cream-machine-magic',
+              Namespace: '',
+              Datacenters: [...],
+              Multiregion: null,
+              Type: 'service',
+              Priority: 100,
+              Periodic: false,
+              ParameterizedJob: false,
+              Stop: false,
+              Status: 'running',
+              StatusDescription: '',
+              JobSummary: {...},
+              CreateIndex: 57,
+              ModifyIndex: 65306,
+              JobModifyIndex: 65287,
+              SubmitTime: 1619192045653244200
+            },
+            ...
+        ]
+    ]
 ...
 
 ```
