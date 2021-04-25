@@ -81,3 +81,9 @@ All commands follow a chainable hierarchy to their root node. Every function ret
   nomadAPI.nodes.drain()
 
 ```
+
+URI Parameters, Body Properties, and Query String elements are flattened with this API. To ensure this isn't a problem, `schema.js` that is included in this library ensures each variable is placed in the right location to make the request to your Nomad Cluster.
+
+* Body Properties retain the same Capitlization and spelling as displayed on the REST Documentation
+* URI Parameters now use a "camelCase" type setting. This means for example `node_id` becomes `nodeId`, `job_id` becomes `jobId`, `allocation_id` becomes `allocationId`.
+
