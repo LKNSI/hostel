@@ -224,7 +224,7 @@ class Hostel {
                 }).catch(k => {console.log(k);return false;})
                 return request
             }else{
-                console.log(`Rejected action, lifecycle issues: ${cl[1]} | AllocationID Included: ${options ? options.allocationId ? true : false : false}`)
+                console.log(`Rejected action, lifecycle issues: ${cl[1]}`)
                 return [false,null];
             }
         },
@@ -239,7 +239,7 @@ class Hostel {
                 }).catch(k => {console.log(k);return false;})
                 return request
             }else{
-                console.log(`Rejected action, lifecycle issues: ${cl[1]} | AllocationID Included: ${options ? options.allocationId ? true : false : false}`)
+                console.log(`Rejected action, lifecycle issues: ${cl[1]}`)
                 return [false,null]
             }
         },
@@ -254,7 +254,7 @@ class Hostel {
                 }).catch(k => {console.log(k);return false;})
                 return request
             }else{
-                console.log(`Rejected action, lifecycle issues: ${cl[1]} | AllocationID Included: ${options ? options.allocationId ? true : false : false}`)
+                console.log(`Rejected action, lifecycle issues: ${cl[1]}`)
                 return [false,null]
             }
         },
@@ -269,7 +269,7 @@ class Hostel {
                 }).catch(k => {console.log(k);return false;})
                 return request
             }else{
-                console.log(`Rejected action, lifecycle issues: ${cl[1]} | AllocationID Included: ${options ? options.allocationId ? true : false : false}`)
+                console.log(`Rejected action, lifecycle issues: ${cl[1]}`)
                 return [false,null]
             }
         },
@@ -514,7 +514,7 @@ class Hostel {
                 console.log(`Rejected action, lifecycle issues: ${cl[1]}`)
                 return false;
             }
-        },
+        }
     }
 }
 module.exports = Hostel
