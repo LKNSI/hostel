@@ -1,5 +1,5 @@
 # Hostel 🏨 
-Nomad Client for NodeJS. 
+[Nomad](https://www.nomadproject.io/) Client for NodeJS. 
 
 Includes built-in paramater, querystring and body checking - helps in preventing fires.
 
