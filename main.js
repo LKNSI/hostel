@@ -21,7 +21,7 @@ class Hostel {
             this.connection = {
                 request: init.timeouts ? init.timeouts.request ? init.timeouts.request : 20000 : 20000
             }
-            this.secretID = (return () => {
+            this.secretID = (() => {
                 if(this.connection.ignoreSecretTLSWarning){
                     return init.secretID ? [init.secretID,true] : ["00000",false]
                 }else{
