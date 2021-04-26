@@ -250,9 +250,9 @@ class Hostel {
             var cl = await this.lifecycleCheck("alloc")
             if(cl[0] === true && (options ? options.allocationId ? true : false : false)){
                 var request = await this.makeRequest({
-                    path: 'allocations.stop',
+                    path: 'allocations.signal',
                     query: false,
-                    body: {Signal: options.signal, Task: options.task},
+                    body: {Signal: options.Signal, Task: options.Task},
                     params: {alloc_id: options.allocationId}
                 }).catch(k => {return [false,null];})
                 return request
@@ -332,8 +332,8 @@ class Hostel {
                     path: 'jobs.create',
                     query: null,
                     body: {
-                        Job: options.job, 
-                        EnforceIndex: options.enforceIndex ? options.EnforceIndex : null,
+                        Job: options.Job, 
+                        EnforceIndex: options.EnforceIndex ? options.EnforceIndex : null,
                         JobModifyIndex: options.JobModifyIndex ? options.JobModifyIndex : null,
                         PolicyOverride: options.PolicyOverride ? options.PolicyOverride : null,
                         PreserveCounts: options.PreserveCounts ? options.PreserveCounts : null
@@ -371,8 +371,8 @@ class Hostel {
                     path: 'jobs.update',
                     query: null,
                     body: {
-                        Job: options.job, 
-                        EnforceIndex: options.enforceIndex ? options.EnforceIndex : null,
+                        Job: options.Job, 
+                        EnforceIndex: options.EnforceIndex ? options.EnforceIndex : null,
                         JobModifyIndex: options.JobModifyIndex ? options.JobModifyIndex : null,
                         PolicyOverride: options.PolicyOverride ? options.PolicyOverride : null,
                         PreserveCounts: options.PreserveCounts ? options.PreserveCounts : null
