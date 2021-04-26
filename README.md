@@ -187,7 +187,7 @@ Example: Creating a Job with our HCL converted already to JSON from above.
     nj.ID = settings.name
     nj.Name = settings.name
     nj.TaskGroups[0].Tasks[0].Resources.CPU = settings.cpu
-    nj.TaskGroups[0].Tasks[0].Resources.Memory = settings.memory
+    nj.TaskGroups[0].Tasks[0].Resources.MemoryMB = settings.memory
     nj.TaskGroups[0].Tasks[0].Config.image = settings.container
 
     await nomadAPI.jobs.create({
