@@ -1,6 +1,6 @@
 {
-  "name": "hostel",
-  "version": "0.0.1",
+  "name": "@chatsight/hostel",
+  "version": "0.0.2",
   "description": "Nomad Client for NodeJS",
   "main": "main.js",
   "directories": {

@@ -7,12 +7,12 @@ Includes built-in paramater, querystring and body checking - helps in preventing
 
 1) Install
 ```shell
-npm install LKNSI/hostel
+npm install @chatsight/hostel
 ```
 
 2) Construct
 ```javascript
-const Hostel = require('hostel')
+const Hostel = require('@chatsight/hostel')
 const fs = require('fs')
 const main = async () => {
     var nomadAPI = new Hostel({
