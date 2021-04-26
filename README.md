@@ -158,6 +158,41 @@ Example: Parsing a HCL file to an Object.
 ...
 ```
 
+Example: Creating a Job with our HCL converted already to JSON from above.
+
+```javascript
+...
+
+  var hclFile = (fs.readFileSync('./job.hcl')).toString()
+  await nomadAPI.jobs.parse({
+    JobHCL: hclFile,
+    Canonicalize: true
+  }).then(k => {
+    var settings = {
+      name: "ice-cream-machine-job",
+      cpu: 1000,
+      memory: 1000,
+      container: '<some container>'
+    }
+
+    var nj = k[1]
+
+    nj.ID = settings.name
+    nj.Name = settings.name
+    nj.TaskGroups[0].Tasks[0].Resources.CPU = settings.cpu
+    nj.TaskGroups[0].Tasks[0].Resources.Memory = settings.memory
+    nj.TaskGroups[0].Tasks[0].Config.image = settings.container
+
+    await nomadAPI.jobs.create({
+      Job: nj
+    }).then(k => {
+      console.log(k)
+    })
+  })
+  
+...
+```
+
 
 ## Adding Features
 
