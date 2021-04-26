@@ -7,12 +7,12 @@ Includes built-in paramater, querystring and body checking - helps in preventing
 
 1) Install
 ```shell
-npm install https://github.com/LKNSI/hostel.git
+npm install LKNSI/hostel
 ```
 
 2) Construct
 ```javascript
-const Hostel = require('LKNSI/hostel')
+const Hostel = require('hostel')
 const fs = require('fs')
 const main = async () => {
     var nomadAPI = new Hostel({
