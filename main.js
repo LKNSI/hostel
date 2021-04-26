@@ -352,7 +352,7 @@ class Hostel {
             var cl = await this.lifecycleCheck("jobs")
             if(cl[0] === true){
                 var request = await this.makeRequest({
-                    path: 'jobs.create',
+                    path: 'jobs.parse',
                     query: null,
                     body: {
                         JobHCL: options.JobHCL ? options.JobHCL : false,
