@@ -124,7 +124,7 @@ class Hostel {
             }
             return (this.lifecycle.isAuthorized && !this.lifecycle.authIsRejected) ? true : false
         }else{
-            console.log(["Failed to reach Nomad Cluster",queryEndpoint[0].response])
+            console.log(["Failed to reach Nomad Cluster",`HTTP Code ${queryEndpoint[0].status}`])
             return 
         }
     }
