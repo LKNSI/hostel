@@ -7,7 +7,7 @@ Includes built-in paramater, querystring and body checking - helps in preventing
 
 1) Install
 ```shell
-npm install LKNSI/hostel
+npm install https://github.com/LKNSI/hostel.git
 ```
 
 2) Construct
