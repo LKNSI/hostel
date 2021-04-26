@@ -150,6 +150,7 @@ Example: Parsing a HCL file to an Object.
 ...
 
   var hclFile = (fs.readFileSync('./job.hcl')).toString()
+  
   await nomadAPI.jobs.parse({
     JobHCL: hclFile,
     Canonicalize: true
@@ -166,10 +167,12 @@ Example: Creating a Job with our HCL converted already to JSON from above.
 ...
 
   var hclFile = (fs.readFileSync('./job.hcl')).toString()
+
   await nomadAPI.jobs.parse({
     JobHCL: hclFile,
     Canonicalize: true
   }).then(k => {
+
     var settings = {
       name: "ice-cream-machine-job",
       cpu: 1000,
@@ -190,6 +193,7 @@ Example: Creating a Job with our HCL converted already to JSON from above.
     }).then(k => {
       console.log(k)
     })
+
   })
   
 ...
