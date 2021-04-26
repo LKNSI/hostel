@@ -58,7 +58,7 @@ await nomadAPI.jobs.list().then(k => {console.log(k)})
     * List
     * Read
     * Create // Standard JSON Object (Stringification not required).
-    * Parse // Pass HCL/HCL2 stringified.
+    * Parse // Pass HCL/HCL2 file from fs.readFileSync(), then convert Buffer to string. Do not Stringify.
     * Update
     * Stop
     * Revert
