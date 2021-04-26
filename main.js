@@ -225,7 +225,7 @@ class Hostel {
                     path: 'allocations.read',
                     query: false,
                     body: false,
-                    params: {alloc_id: options.allocationId}
+                    params: {alloc_id: options.allocId}
                 }).catch(k => {return [false,null];})
                 return request
             }else{
@@ -240,7 +240,7 @@ class Hostel {
                     path: 'allocations.stop',
                     query: false,
                     body: false,
-                    params: {alloc_id: options.allocationId}
+                    params: {alloc_id: options.allocId}
                 }).catch(k => {return [false,null];})
                 return request
             }else{
@@ -255,7 +255,7 @@ class Hostel {
                     path: 'allocations.signal',
                     query: false,
                     body: {Signal: options.Signal, Task: options.Task},
-                    params: {alloc_id: options.allocationId}
+                    params: {alloc_id: options.allocId}
                 }).catch(k => {return [false,null];})
                 return request
             }else{
@@ -270,7 +270,7 @@ class Hostel {
                     path: 'allocations.restart',
                     query: false,
                     body: false,
-                    params: {alloc_id: options.allocationId}
+                    params: {alloc_id: options.allocId}
                 }).catch(k => {return [false,null];})
                 return request
             }else{
