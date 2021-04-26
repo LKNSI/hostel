@@ -188,9 +188,11 @@ class Hostel {
                 if(request){
                     if(request.status >= 200 && request.status < 300){
                         return [true,request.data ? request.data : null]
+                    }else{
+                        return [false,request.data ? request.data : null]
                     }
                 }else{
-                    return [false,request.data ? request.data : null];
+                    return [false,request.data ? request.data : null]
                 }
             }else{
                 return [false,invalidRequest];
