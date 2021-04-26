@@ -181,9 +181,9 @@ class Hostel {
                 if(["put","delete","patch","get","options"].includes(schemaObject.type)){
                     request = await this.request[schemaObject.type](`${this.version}${schemaObject.path}${renderedParams ? renderedParams : ""}${renderedAction ? `/${renderedAction}` : ""}${renderQuery ? `/${renderQuery}` : ""}`,{
                         data: body ? body : null
-                    }).catch(k => {console.log(k);return false;})
+                    }).catch(k => {console.log(k.data ? k.data : "");return false;})
                 }else{
-                    request = await this.request[schemaObject.type](`${this.version}${schemaObject.path}${renderedParams ? renderedParams : ""}${renderedAction ? `/${renderedAction}` : ""}${renderQuery ? `/${renderQuery}` : ""}`,body ? body : {}).catch(k => {console.log(k);return false;})
+                    request = await this.request[schemaObject.type](`${this.version}${schemaObject.path}${renderedParams ? renderedParams : ""}${renderedAction ? `/${renderedAction}` : ""}${renderQuery ? `/${renderQuery}` : ""}`,body ? body : {}).catch(k => {console.log(k.data ? k.data : "");return false;})
                 }
                 if(request){
                     if(request.status >= 200 && request.status < 300){
@@ -513,6 +513,23 @@ class Hostel {
                     query: null,
                     body: {Eligibility: options.Eligibility},
                     params: {node_id: options.nodeId}
+                }).catch(k => {return [false,null];})
+                return request
+            }else{
+                console.log(`Rejected action, lifecycle issues: ${cl[1]}`)
+                return [false,null];
+            }
+        }
+    }
+    system = {
+        forceGC: async (options) => {
+            var cl = await this.lifecycleCheck("nodes")
+            if(cl[0] === true){
+                var request = await this.makeRequest({
+                    path: 'system.forceGC',
+                    query: null,
+                    body: null,
+                    params: null
                 }).catch(k => {return [false,null];})
                 return request
             }else{

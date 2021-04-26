@@ -164,6 +164,16 @@ module.exports = {
                 action: "eligibility",
                 path: "/node",
             },
+        },
+        system:{
+            forceGC:{
+                query: [],
+                params:[],
+                body: [],
+                type: "put",
+                action: false,
+                path: "/system/gc", 
+            }
         }
     }
 }

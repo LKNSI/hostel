@@ -71,6 +71,8 @@ await nomadAPI.jobs.list().then(k => {console.log(k)})
     * Drain
     * Purge
     * Eligibility
+  * System
+    * Force GC
 
 ## API Documentation
 
@@ -150,7 +152,7 @@ Example: Parsing a HCL file to an Object.
 ...
 
   var hclFile = (fs.readFileSync('./job.hcl')).toString()
-  
+
   await nomadAPI.jobs.parse({
     JobHCL: hclFile,
     Canonicalize: true
