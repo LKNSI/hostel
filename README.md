@@ -141,6 +141,24 @@ All functions (except .hostel chain functions (i.e. `nomadAPI.hostel.supportedAc
 ...
 
 ```
+
+Example: Parsing a HCL file to an Object.
+
+```javascript
+...
+
+  var hclFile = (fs.readFileSync('./job.hcl')).toString()
+  await nomadAPI.jobs.parse({
+    JobHCL: hclFile,
+    Canonicalize: true
+  }).then(k => {
+    // k[1] contains the HCL file submitted, now parsed as JSON, represented by an Object
+  })
+
+...
+```
+
+
 ## Adding Features
 
 If you wish to add features I haven't gotten to yet, you can pretty easily do so like:
