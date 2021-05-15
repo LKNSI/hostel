@@ -27,6 +27,7 @@ const main = async () => {
              cert: fs.readFileSync('/secrets/...'),
              ca: fs.readFileSync('/secrets/...'),
           },
+          secretID: "s.70697a7a61" // Secret ID. No, this is not an actual key.
           ignoreSecretTLSWarning: false, // Prevent Client from sending SecretID if HTTP is accidently selected. Set to true to ignore.
           ignoreTLSWarning: false // Ignore HTTPS Unauthorized warning by setting to true.
         },
@@ -173,7 +174,7 @@ Example: Creating a Job with our HCL converted already to JSON from above.
   await nomadAPI.jobs.parse({
     JobHCL: hclFile,
     Canonicalize: true
-  }).then(k => {
+  }).then(async k => {
 
     var settings = {
       name: "ice-cream-machine-job",
@@ -204,7 +205,7 @@ Example: Creating a Job with our HCL converted already to JSON from above.
 
 ## Adding Features
 
-If you wish to add features I haven't gotten to yet, you can pretty easily do so like:
+If you wish to add features we haven't gotten to yet, you can pretty easily do so by;
 
 i) Fork the repo.
 

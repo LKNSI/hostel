@@ -1,13 +1,13 @@
 {
   "name": "@chatsight/hostel",
-  "version": "0.0.8",
+  "version": "1.0.0",
   "description": "Nomad Client for NodeJS",
   "main": "main.js",
   "directories": {
     "test": "tests"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [
     "nomad",
@@ -19,5 +19,8 @@
     "agentkeepalive": "^4.1.4",
     "axios": "^0.21.1",
     "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3"
   }
 }
