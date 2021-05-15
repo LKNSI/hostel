@@ -27,7 +27,7 @@ const main = async () => {
              cert: fs.readFileSync('/secrets/...'),
              ca: fs.readFileSync('/secrets/...'),
           },
-          secretID: "s.70697a7a61" // Secret ID. No, this is not an actual key.
+          secretID: "s.70697a7a61", // Secret ID. No, this is not an actual key.
           ignoreSecretTLSWarning: false, // Prevent Client from sending SecretID if HTTP is accidently selected. Set to true to ignore.
           ignoreTLSWarning: false // Ignore HTTPS Unauthorized warning by setting to true.
         },
