@@ -45,7 +45,7 @@ class Hostel {
                 baseURL: `${this.ssl.enabled ? "https" : "http"}://${this.hostname}:${this.port}`,
                 timeout: this.connection.request,
                 headers: {
-                    "X-Nomad-Token": this.includeSecretID ? this.secretID[0] : "00000"
+                    "X-Nomad-Token": process.env.NOMAD_TOKEN //this.includeSecretID ? this.secretID[0] : "00000"
                 },
                 httpAgent: new http.Agent({keepAlive: this.connection.keepAlive}),
                 httpsAgent: new https.Agent({
@@ -86,39 +86,13 @@ class Hostel {
         }
     }
     async initialize(){
-        var queryCredentials = async () => {
-            return await this.request[schema.ACLTokens.readSelf.type](`${this.version}${schema.ACLTokens.readSelf.path}`)
-                .then(k => {
-                    if(k.data){
-                        if(k.data.AccessorID){
-                            return true
-                        }else{
-                            return false
-                        }
-                    }
-                })
-                .catch(k => {
-                    return false
-                })
-        }
         var queryEndpoint = await this.request.options('/').then(k => {return [k,true]}).catch(k => {return [k,false];})
         if(queryEndpoint[1] === true){
             if(queryEndpoint[0].status === 200){
                 this.includeSecretID = true
                 this.isReady = true
-                if(this.secretID[1]){
-                    await queryCredentials().then(k => {
-                        if(k === true){
-                            this.lifecycle.isReady = true
-                            this.lifecycle.isAuthorized = true
-                        }else{
-                            this.lifecycle.authIsRejected = true
-                        }
-                    })
-                }else{
-                    this.lifecycle.isReady = true
-                    this.lifecycle.isAuthorized = true
-                }
+                this.lifecycle.isReady = true
+                this.lifecycle.isAuthorized = true
             }else{
                 this.lifecycle.authIsRejected = true
             }
@@ -181,9 +155,9 @@ class Hostel {
                 if(["put","delete","patch","get","options"].includes(schemaObject.type)){
                     request = await this.request[schemaObject.type](`${this.version}${schemaObject.path}${renderedParams ? renderedParams : ""}${renderedAction ? `/${renderedAction}` : ""}${renderQuery ? `/${renderQuery}` : ""}`,{
                         data: body ? body : null
-                    }).catch(k => {console.log(k.data ? k.data : "");return false;})
+                    }).catch(k => {console.log([k.response.status,k.response.data ? k.response.data : ""]);return false;})
                 }else{
-                    request = await this.request[schemaObject.type](`${this.version}${schemaObject.path}${renderedParams ? renderedParams : ""}${renderedAction ? `/${renderedAction}` : ""}${renderQuery ? `/${renderQuery}` : ""}`,body ? body : {}).catch(k => {console.log(k.data ? k.data : "");return false;})
+                    request = await this.request[schemaObject.type](`${this.version}${schemaObject.path}${renderedParams ? renderedParams : ""}${renderedAction ? `/${renderedAction}` : ""}${renderQuery ? `/${renderQuery}` : ""}`,body ? body : {}).catch(k => {console.log([k.response.status,k.response.data ? k.response.data : ""]);return false;})
                 }
                 if(request){
                     if(request.status >= 200 && request.status < 300){

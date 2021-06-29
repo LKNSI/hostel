@@ -27,7 +27,9 @@ const main = async () => {
              cert: fs.readFileSync('/secrets/...'),
              ca: fs.readFileSync('/secrets/...'),
           },
+          /* WARNING: Use process.env.NOMAD_TOKEN instead for the secretID, this is left here for only versions <=1.0.2 */ 
           secretID: "s.70697a7a61", // Secret ID. No, this is not an actual key.
+          /**/
           ignoreSecretTLSWarning: false, // Prevent Client from sending SecretID if HTTP is accidently selected. Set to true to ignore.
           ignoreTLSWarning: false // Ignore HTTPS Unauthorized warning by setting to true.
         },
