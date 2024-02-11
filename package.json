@@ -1,26 +1,16 @@
 {
-  "name": "@chatsight/hostel",
-  "version": "1.0.3",
-  "description": "Nomad Client for NodeJS",
-  "main": "main.js",
-  "directories": {
-    "test": "tests"
-  },
+  "name": "hostel",
+  "version": "2.0.0",
+  "description": "",
+  "main": "./src/main.ts",
   "scripts": {
-    "test": "jest"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "nomad",
-    "hashicorp"
-  ],
+  "keywords": [],
   "author": "LKNSI",
-  "license": "MIT",
+  "license": "ISC",
   "dependencies": {
-    "agentkeepalive": "^4.1.4",
-    "axios": "^0.21.1",
-    "lodash": "^4.17.21"
-  },
-  "devDependencies": {
-    "jest": "^26.6.3"
+    "@types/node": "^20.11.17",
+    "axios": "^1.6.7"
   }
 }

@@ -1,0 +1,40 @@
+{
+    "watchOptions": {
+      "excludeDirectories": [
+        "**/node_modules",
+        ".cache"
+      ]
+    },
+    "compilerOptions": {
+      "noImplicitAny": true,
+      "allowJs": false,
+      "allowSyntheticDefaultImports": true,
+      "lib": ["es2021"],
+      "module": "CommonJS",
+      "moduleResolution": "node",
+      "noUnusedParameters": false,
+      "preserveConstEnums": true,
+      "removeComments": false,
+      "skipLibCheck": true,
+      "inlineSourceMap": true,
+      "strict": true,
+      "target": "es2021",
+      "types": [
+        "node"
+      ],
+      "baseUrl": ".",
+      "rootDir": ".",
+      "forceConsistentCasingInFileNames": true,
+      "esModuleInterop": true,
+      "resolveJsonModule": true,
+      "useUnknownInCatchVariables": false,
+      "outDir": "dist/",
+      "checkJs": false,
+      "noEmit": true
+    },
+    "include": [
+        "src/**/*",
+    ],
+    "exclude": ["**/node_modules", "**/.*/", "build", "pkg"]
+  }
+  
